@@ -17,9 +17,11 @@ return new class extends Migration
             $table->text('description');
             $table->string('genre');
             $table->float('rating');
+            $table->string('image');
             $table->timestamps();
         });
     }
+    
     
     /**
      * Reverse the migrations.

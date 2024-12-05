@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Movies List</title>
+    <title>Movie List</title>
 </head>
 <body>
-    <h1>Movies</h1>
-    <a href="/movie/create">tambah movie</a>
+    <h1>Movie</h1>
+    <a href="/movie/create">Tambah</a>
     <ul>
         @foreach($movie as $movie)
         <li>
             
-    {{ $movie->title }} ({{ $movie->genre }}) - {{ $movie->rating }}- ({{ $movie->description }})
-                <form action="/movies/{{ $movie->id }}" method="POST" style="display:inline;">
-                    @csrf
-                </form>
-            </tb>
-            </li>
+            @if($movie->image)
+                <img src="{{ asset('storage/' . $movie->image) }}" alt="{{ $movie->title }}">
+
+            @endif
+            
+            
+            <div>
+                Nama:<strong>{{ $movie->title }}</strong> 
+                Genre:({{ $movie->genre }})<br>
+                Rating: {{ $movie->rating }} / 10<br>
+                Dscripsi<em>{{ $movie->description }}</em>
+            </div>
+        </li>
         @endforeach
     </ul>
 </body>
